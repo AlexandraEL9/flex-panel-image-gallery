@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Flex Panels 💪</title>
+  <!-- Link to Google Fonts -->
+  <link href='https://fonts.googleapis.com/css?family=Amatic+SC' rel='stylesheet' type='text/css'>
+  <!-- Link to favicon -->
+  <link rel="icon" href="https://fav.farm/✅" />
+</head>
+<body>
+  <!-- CSS Styles -->
+  <style>
+    /* Global styles */
+    html {
+      box-sizing: border-box;
+      background: #ffc600; /* Background color */
+      font-family: 'helvetica neue'; /* Font family */
+      font-size: 20px; /* Font size */
+      font-weight: 200; /* Font weight */
+    }
+
+    body {
+      margin: 0; /* Remove default body margin */
+    }
+
+    /* Box-sizing inheritance */
+    *, *:before, *:after {
+      box-sizing: inherit;
+    }
+
+    /* Flex panels container */
+    .panels {
+      min-height: 100vh; /* Minimum height of viewport */
+      overflow: hidden; /* Hide overflow */
+      display: flex; /* Use flexbox layout */
+    }
+
+    /* Individual flex panel */
+    .panel {
+      background: #6B0F9C; /* Background color */
+      box-shadow: inset 0 0 0 5px rgba(255,255,255,0.1); /* Box shadow */
+      color: white; /* Text color */
+      text-align: center; /* Center align text */
+      align-items: center; /* Center align items */
+      transition: /* Transition effects */
+        font-size 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11), /* Font size */
+        flex 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11), /* Flex grow */
+        background 0.2s; /* Background */
+      font-size: 20px; /* Font size */
+      background-size: cover; /* Background size */
+      background-position: center; /* Background position */
+      flex: 1; /* Flex grow */
+      justify-content: center; /* Center justify content */
+      display: flex; /* Use flexbox layout */
+      flex-direction: column; /* Column direction */
+    }
+
+    /* Individual flex panel content */
+    .panel > * {
+      margin: 0; /* Remove default margin */
+      width: 100%; /* Full width */
+      transition: transform 0.5s; /* Transition effect for transform */
+      flex: 1 0 auto; /* Flex properties */
+      display: flex; /* Use flexbox layout */
+      justify-content: center; /* Center justify content */
+      align-items: center; /* Center align items */
+    }
+
+    /* Initial state of panel content */
+    .panel > *:first-child { transform: translateY(-100%); } /* Translate up */
+    /* Active state of panel content */
+    .panel.open-active > *:first-child { transform: translateY(0); } /* Translate to original position */
+    .panel > *:last-child { transform: translateY(100%); } /* Translate down */
+    .panel.open-active > *:last-child { transform: translateY(0); } /* Translate to original position */
+
+    /* Styling for panel text */
+    .panel p {
+      text-transform: uppercase; /* Uppercase text */
+      font-family: 'Amatic SC', cursive; /* Font family */
+      text-shadow: 0 0 4px rgba(0, 0, 0, 0.72), 0 0 14px rgba(0, 0, 0, 0.45); /* Text shadow */
+      font-size: 2em; /* Font size */
+    }
+
+    /* Additional styling for second paragraph */
+    .panel p:nth-child(2) {
+      font-size: 4em; /* Larger font size */
+    }
+
+    /* Active state of panel */
+    .panel.open {
+      flex: 5; /* Expand the panel */
+      font-size: 40px; /* Larger font size */
+    }
+
+    /* Media query for smaller screens */
+    @media only screen and (max-width: 600px) {
+      .panel p {
+        font-size: 1em; /* Smaller font size */
+      }
+    }
+  </style>
+
+  <!-- Flex Panels -->
+  <div class="panels">
+    <!-- Individual panels with different background images -->
+    <div class="panel panel1">
+      <p>Hey</p>
+      <p>Let's</p>
+      <p>Dance</p>
+    </div>
+    <div class="panel panel2">
+      <p>Give</p>
+      <p>Take</p>
+      <p>Receive</p>
+    </div>
+    <div class="panel panel3">
+      <p>Experience</p>
+      <p>It</p>
+      <p>Today</p>
+    </div>
+    <div class="panel panel4">
+      <p>Give</p>
+      <p>All</p>
+      <p>You can</p>
+    </div>
+    <div class="panel panel5">
+      <p>Life</p>
+      <p>In</p>
+      <p>Motion</p>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    // Select all panel elements
+    const panels = document.querySelectorAll('.panel');
+
+    // Function to toggle 'open' class on panel click
+    function toggleOpen() {
+      console.log('Hello');
+      this.classList.toggle('open');
+    }
+
+    // Function to toggle 'open-active' class on panel transitionend event
+    function toggleActive(e) {
+      console.log(e.propertyName);
+      if (e.propertyName.includes('flex')) {
+        this.classList.toggle('open-active');
+      }
+    }
+
+    // Event listeners for panel click and transitionend
+    panels.forEach(panel => panel.addEventListener('click', toggleOpen));
+    panels.forEach(panel => panel.addEventListener('transitionend', toggleActive));
+  </script>
+
+</body>
+</html>
+
+The HTML structure consists of a series of 
+panels (<div class="panel">) wrapped inside a
+     container (<div class="panels">).
+Each panel has its own background image 
+    and text content.
+The CSS defines styles for the panels, 
+    including layout, sizing, transitions, 
+    and text styling.
+JavaScript is used to toggle classes on 
+    panel click (toggleOpen()) and on 
+    transition end (toggleActive()), enabling
+     animations and interactive behavior.
+The toggleOpen() function toggles the open 
+    class on the clicked panel.
+The toggleActive() function toggles the 
+     open-active class when a transition on 
+     flex property (flex) ends.
+    These classes trigger CSS transitions, 
+    making the panels expand and reveal 
+    their content smoothly.
+Media query is used to adjust font size for 
+smaller screens.
